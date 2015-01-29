@@ -1,3 +1,4 @@
+$ curl -o /tmp/people1.json http://172.16.18.146:8080/people1.json
 $ hadoop fs -mkdir /data/
 $ hadoop fs -put /tmp/people1.json /data/1.json
 $ cd /usr/local/spark
