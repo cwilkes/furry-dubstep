@@ -1,2 +1,4 @@
 .python-version
 venv/
+part-r-00000.gz
+*.pyc

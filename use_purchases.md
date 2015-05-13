@@ -81,9 +81,9 @@ def purchase14_sites(rdd):
     return rdd[0], sorted(list(set([_[2] for _ in events])))
   return rdd[0], list()
   
-                
-rr=j.map(purchase14_sites)
-rr.first()
+co = A2.group(B2)                
+my_purchases=co.map(purchase14_sites)
+my_purchases.first()
 (u'c3a50355-8768-4472-83c6-875aaf99cef9', [16, 10, 11, 13, 15])
    
    

@@ -1,3 +1,6 @@
+from pyspark.sql import SQLContext, Row
+import simplejson as json
+
 
 # position 0 is category, 1 is ns, 2 is site
 # which sort of seems arbitrary
