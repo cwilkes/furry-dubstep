@@ -2,6 +2,30 @@
 import rads_model
 
 
+def double_categories(line):
+    cats = sorted(line[1])
+    for pos, cat1 in enumerate(cats[:-1]):
+        # want to emit (cat1, cat1)
+        for cat2 in cats[pos:]:
+            yield ((cat1, cat2), 1)
+
+
+class SiteFilterTsv(object):
+    def __init__(self, acceptable_sites):
+        self.acceptable_sites = set(acceptable_sites)
+
+    def evaluate(self, rdd):
+        attributes = set()
+        parts = rdd.split()
+        user_id = int(parts[0])
+        for user_attr in parts[1:-1]:
+            ns, site, cat, frequency, recency = [int(_) for _ in user_attr.split(',')]
+            if site in self.acceptable_sites:
+                attributes.add((ns, cat))
+        #print 'ret', user_id, list(attributes)
+        return user_id, list(attributes)
+
+
 class SiteFilter(object):
     def __init__(self, acceptable_sites, userid_pos, attr_pos, site_pos):
         self.acceptable_sites = set(acceptable_sites)
